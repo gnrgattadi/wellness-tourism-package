@@ -13,43 +13,51 @@ This application predicts the likelihood of a Tourism Product being accepted by 
 Enter the parameters below to get a prediction.
 """)
 
+TypeofContacts= ["Self Enquiry", "Company Invited"]
+Occupations= ["Free Lancer",	"Large Business",	"Salaried",	"Small Business"]
+Genders= ["Male","Female"]
+MaritalStatuses= ["Single","Married","Divorced"]
+ProductsPitched= ["Basic","Deluxe","King","Standard","Super Deluxe"]
+Designations= ["AVP","Executive","Manager","Senior Manager","VP"]
+
+# Collect user inputs
 age                       = st.number_input("Age", 18, 61, 18, 1)
-TypeofContact             = st.selectbox("Type of Contact", ["Self Enquiry", "Company Invited"])  
+TypeofContact             = st.selectbox("Type of Contact", TypeofContacts)  
 CityTier                  = st.selectbox("CityTier", [1,2,3])  
 DurationOfPitch           = st.number_input("Duration Of Pitch")
-Occupation                = st.selectbox("Occupation", ["Free Lancer",	"Large Business",	"Salaried",	"Small Business"])  
-Gender                    = st.selectbox("Gender", ["Male","Female"])
+Occupation                = st.selectbox("Occupation",Occupations)  
+Gender                    = st.selectbox("Gender", Genders)
 NumberOfPersonVisiting    = st.number_input("Number Of Person Visiting", 1, 5, 1, 1)
 NumberOfFollowups         = st.number_input("Number Of Follow ups", 1, 6, 1, 1)
-ProductPitched            = st.selectbox("Product Pitched", ["Basic","Deluxe","King","Standard","Super Deluxe"])
+ProductPitched            = st.selectbox("Product Pitched", ProductsPitched)
 PreferredPropertyStar     = st.selectbox("Preferred Property Star", [3,4,5])  
-MaritalStatus             = st.selectbox("MaritalStatus", ["Single","Married","Divorced"])
+MaritalStatus             = st.selectbox("MaritalStatus", MaritalStatuses)
 NumberOfTrips             = st.number_input("Number Of Trips")
 Passport                  = st.selectbox("Passport", [0,1])  
 PitchSatisfactionScore    = st.selectbox("Pitch Satisfaction Score", [1,2,3,4,5])  
 OwnCar                    = st.selectbox("Own Car", [0,1])  
 NumberOfChildrenVisiting  = st.number_input("Number Of Children Visiting", 0, 3, 0, 1)
-Designation               = st.selectbox("Designation", ["AVP","Executive","Manager","Senior Manager","VP"])
+Designation               = st.selectbox("Designation", Designations)
 MonthlyIncome             = st.number_input("Monthly Income")
 
 input_data = pd.DataFrame([{
     "Age": age,
-    "TypeofContact": TypeofContact,
+    "TypeofContact":  TypeofContacts.index(TypeofContact),
     "CityTier": CityTier,
     "DurationOfPitch": DurationOfPitch,
-    "Occupation": Occupation,
-    "Gender": Gender,
+    "Occupation": Occupations.index(Occupation),
+    "Gender": Genders.index(Gender),
     "NumberOfPersonVisiting": NumberOfPersonVisiting,
     "NumberOfFollowups": NumberOfFollowups,
-    "ProductPitched": ProductPitched,
+    "ProductPitched":ProductsPitched.index(ProductPitched),
     "PreferredPropertyStar": PreferredPropertyStar,
-    "MaritalStatus": MaritalStatus,
+    "MaritalStatus":MaritalStatuses.index(MaritalStatus),
     "NumberOfTrips": NumberOfTrips,
     "Passport": Passport,
     "PitchSatisfactionScore": PitchSatisfactionScore,
     "OwnCar": OwnCar,
     "NumberOfChildrenVisiting": NumberOfChildrenVisiting,
-    "Designation": Designation,
+    "Designation":Designations.index(Designation),
     "MonthlyIncome": MonthlyIncome
     
 }])
