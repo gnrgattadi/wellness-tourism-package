@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split #data preprocessing and pip
 from sklearn.preprocessing import LabelEncoder #text to lable encoding
 
 df = pd.read_csv("tourism_project/data/tourism.csv")
-df.drop(columns=["CustomerID"], inplace=True) #dropping customer id 
+df.drop(columns=["Unnamed: 0","CustomerID"], inplace=True) #dropping customer id 
 
 numerical_columns = df.select_dtypes(include=[np.number]).columns
 categorical_columns = df.select_dtypes(exclude=[np.number]).columns
